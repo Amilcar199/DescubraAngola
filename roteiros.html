@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roteiros - Descubra Angola</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">ANGOLA</div>
+    <nav>
+      <ul>
+        <li><a href="destinos.html">Destinos</a></li>
+        <li><a href="roteiros.html">Roteiros</a></li>
+        <li><a href="reservas.html">Reservas</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="area-utilizador.html" class="btn-login">Área de Utilizador</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="section-header">
+    <h2>Roteiros Recomendados</h2>
+    <div class="setas">
+      <button onclick="scrollRoteiros('esquerda')">⬅️</button>
+      <button onclick="scrollRoteiros('direita')">➡️</button>
+    </div>
+  </section>
+  <div class="roteiros-container" id="roteirosContainer">
+    <div class="roteiro-card">
+      <h3>Aventura no Sul de Angola</h3>
+      <p>Explora as maravilhas do sul de Angola.</p>
+    </div>
+    <div class="roteiro-card">
+      <h3>Tour Cultural em Luanda</h3>
+      <p>Conheça a cultura, música e gastronomia.</p>
+    </div>
+    <div class="roteiro-card">
+      <h3>Exploração Costeira</h3>
+      <p>Descubra praias e paisagens incríveis.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
