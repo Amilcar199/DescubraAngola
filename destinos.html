@@ -21,20 +21,22 @@
   </header>
 
   <section class="section-header">
-    <h2>Destinos de Angola</h2>
+    <h2>Todos os destinos</h2>
   </section>
-  <div class="card-container">
-    <div class="card">
-      <img src="imagens/morro.jpg" alt="Morro do Môco">
-      <h3>Morro do Môco</h3>
-    </div>
-    <div class="card">
-      <img src="imagens/tundavala.jpg" alt="Fenda da Tundavala">
-      <h3>Fenda da Tundavala</h3>
-    </div>
-    <div class="card">
-      <img src="imagens/baja.jpg" alt="Praia da Baía Azul">
-      <h3>Praia da Baía Azul</h3>
+  <div class="container">
+    <div id="destinosGrid" class="cards cards--destinos"></div>
+  </div>
+
+  <!-- Modal de Detalhes do Destino -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__dialog">
+      <button class="modal__close" aria-label="Fechar">&times;</button>
+      <div class="modal__media"><img id="modalImg" alt="" /></div>
+      <div class="modal__content">
+        <h2 id="modalTitulo"></h2>
+        <div id="modalLocal" class="modal__meta"></div>
+        <p id="modalDescricao"></p>
+      </div>
     </div>
   </div>
 

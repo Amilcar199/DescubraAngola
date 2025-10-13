@@ -42,7 +42,31 @@
         </div>
       </div>
     </section>
+
+    <!-- Destinos na Home -->
+    <section class="section destinos">
+      <div class="container">
+        <div class="section-header">
+          <h2>Destinos populares</h2>
+          <a class="btn btn--ghost btn--sm" href="destinos.html">Ver todos</a>
+        </div>
+        <div id="destinosHome" class="cards cards--destinos"></div>
+      </div>
+    </section>
   </main>
+
+  <!-- Modal de Detalhes do Destino -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__dialog">
+      <button class="modal__close" aria-label="Fechar">&times;</button>
+      <div class="modal__media"><img id="modalImg" alt="" /></div>
+      <div class="modal__content">
+        <h2 id="modalTitulo"></h2>
+        <div id="modalLocal" class="modal__meta"></div>
+        <p id="modalDescricao"></p>
+      </div>
+    </div>
+  </div>
 
   <script src="script.js"></script>
 </body>
