@@ -1,0 +1,173 @@
+/* =============================== */
+/* ESTILO GERAL                    */
+/* =============================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, sans-serif;
+  background: #111;
+  color: #fff;
+}
+
+/* =============================== */
+/* HEADER                          */
+/* =============================== */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background: #000;
+}
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+  color: #e41b13;
+}
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 20px;
+}
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+.btn-login {
+  background: #e41b13;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+/* =============================== */
+/* HERO                            */
+/* =============================== */
+.hero {
+  height: 60vh;
+  background: url('img/hero.jpg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.hero-content {
+  text-align: center;
+  background: rgba(0,0,0,0.5);
+  padding: 20px;
+  border-radius: 10px;
+}
+.hero h1 { font-size: 36px; }
+.hero p { margin: 10px 0; }
+.btn-primario {
+  background: #e9b60e;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+/* =============================== */
+/* SEÇÕES GERAIS                   */
+/* =============================== */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px;
+}
+.section-header h2 {
+  font-size: 24px;
+}
+.ver-todos {
+  background: transparent;
+  color: #e9b60e;
+  border: 1px solid #e9b60e;
+  padding: 5px 10px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* =============================== */
+/* DESTINOS & EVENTOS              */
+/* =============================== */
+.card-container {
+  display: flex;
+  gap: 20px;
+  padding: 0 30px 30px;
+  flex-wrap: wrap;
+}
+.card {
+  background: #222;
+  border-radius: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  width: 300px;
+  transition: transform 0.3s;
+}
+.card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.card:hover {
+  transform: scale(1.05);
+}
+.card h3 {
+  padding: 10px;
+  text-align: center;
+}
+
+/* =============================== */
+/* ROTEIROS (com setas)            */
+/* =============================== */
+.roteiros-container {
+  display: flex;
+  gap: 20px;
+  padding: 0 30px 30px;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+}
+.roteiro-card {
+  background: #222;
+  min-width: 250px;
+  padding: 20px;
+  border-radius: 10px;
+}
+.setas button {
+  background: transparent;
+  color: #e9b60e;
+  font-size: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* =============================== */
+/* MODAL                           */
+/* =============================== */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8);
+  justify-content: center;
+  align-items: center;
+}
+.modal-content {
+  background: #222;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  text-align: center;
+}
+.close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 30px;
+  cursor: pointer;
+}

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Descubra Angola</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- ============================= -->
+  <!-- 🧭 HEADER — MENU PRINCIPAL -->
+  <!-- ============================= -->
+  <header>
+    <div class="logo">ANGOLA</div>
+    <nav>
+      <ul>
+        <li><a href="destinos.html">Destinos</a></li>
+        <li><a href="roteiros.html">Roteiros</a></li>
+        <li><a href="reservas.html">Reservas</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="area-utilizador.html" class="btn-login">Área de Utilizador</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ============================= -->
+  <!-- 🏔️ SEÇÃO HERO -->
+  <!-- ============================= -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Descubra Angola</h1>
+      <p>Explore as belezas naturais, culturais e históricas de Angola</p>
+      <button class="btn-primario">Buscar destinos</button>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- 📍 DESTINOS POPULARES -->
+  <!-- ============================= -->
+  <section class="destinos">
+    <div class="section-header">
+      <h2>Destinos Populares</h2>
+      <button class="ver-todos" onclick="mostrarMaisDestinos()">Ver todos</button>
+    </div>
+    <div class="card-container">
+      <div class="card" onclick="abrirModal('Morro do Moco')">
+        <img src="img/morro.jpg" alt="Morro do Moco">
+        <h3>Morro do Moco</h3>
+      </div>
+      <div class="card" onclick="abrirModal('Tundavala')">
+        <img src="img/tundavala.jpg" alt="Tundavala">
+        <h3>Tundavala</h3>
+      </div>
+      <div class="card" onclick="abrirModal('Praia da Baja Azul')">
+        <img src="img/baja.jpg" alt="Praia da Baja Azul">
+        <h3>Praia da Baja Azul</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- 🧭 ROTEIROS RECOMENDADOS -->
+  <!-- ============================= -->
+  <section class="roteiros">
+    <div class="section-header">
+      <h2>Roteiros Recomendados</h2>
+      <div class="setas">
+        <button onclick="scrollRoteiros('esquerda')">⬅️</button>
+        <button onclick="scrollRoteiros('direita')">➡️</button>
+      </div>
+    </div>
+    <div class="roteiros-container" id="roteirosContainer">
+      <div class="roteiro-card">
+        <h3>Aventura no Sul de Angola</h3>
+        <p>Explora as maravilhas do sul de Angola.</p>
+      </div>
+      <div class="roteiro-card">
+        <h3>Tour Cultural em Luanda</h3>
+        <p>Conheça a cultura, música e gastronomia.</p>
+      </div>
+      <div class="roteiro-card">
+        <h3>Exploração Costeira</h3>
+        <p>Descubra praias e paisagens incríveis.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- 🥁 EVENTOS CULTURAIS -->
+  <!-- ============================= -->
+  <section class="eventos">
+    <div class="section-header">
+      <h2>Eventos Culturais</h2>
+      <button class="ver-todos" onclick="mostrarMaisEventos()">Ver todos</button>
+    </div>
+    <div class="card-container">
+      <div class="card" onclick="abrirModal('Festas Tradicionais')">
+        <img src="img/festas.jpg" alt="Festas Tradicionais">
+        <h3>Festas Tradicionais</h3>
+      </div>
+      <div class="card" onclick="abrirModal('Feira de Artesanato')">
+        <img src="img/feira.jpg" alt="Feira de Artesanato">
+        <h3>Feira de Artesanato</h3>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================= -->
+  <!-- 📌 MODAL INFORMAÇÕES -->
+  <!-- ============================= -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="fecharModal()">&times;</span>
+      <h2 id="modalTitulo"></h2>
+      <p id="modalDescricao">Aqui vai aparecer a descrição do destino/evento escolhido.</p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
