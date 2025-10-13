@@ -148,12 +148,14 @@ function renderRoteirosCarousel() {
   const vp = document.getElementById('carouselRoteiros');
   if (!vp) return;
   vp.innerHTML = '';
-  roteiros.forEach((r) => {
+  // criamos os itens base primeiro
+  const baseItems = roteiros.map((r) => {
     const item = document.createElement('article');
     item.className = 'roteiro-card';
     item.innerHTML = `<h3>${r.titulo}</h3><p>${r.desc}</p>`;
-    vp.appendChild(item);
+    return item;
   });
+  baseItems.forEach((el) => vp.appendChild(el));
 
   let index = 0;
   const leftBtn = document.querySelector('.carousel__arrow--left');
@@ -166,7 +168,6 @@ function renderRoteirosCarousel() {
   const prepend = roteiros.slice(-group);
   const append = roteiros.slice(0, group);
 
-  const items = Array.from(vp.children);
   // Prepend
   prepend.forEach((r) => {
     const item = document.createElement('article');
@@ -185,14 +186,17 @@ function renderRoteirosCarousel() {
   const gap = 16; // mesmo do CSS
 
   function getItemWidth() {
+    // como usamos flex e gap fixo, obter a largura real do primeiro card
+    const first = vp.children[0];
+    if (first) return first.getBoundingClientRect().width + gap; // inclui gap
     const width = vp.clientWidth;
-    return (width - (visible - 1) * gap) / visible;
+    return (width - (visible - 1) * gap) / visible + gap;
   }
 
   function setTranslate(newIndex, animated = true) {
     const itemWidth = getItemWidth();
     vp.style.transition = animated ? 'transform .35s ease' : 'none';
-    vp.style.transform = `translateX(-${newIndex * (itemWidth + gap)}px)`;
+    vp.style.transform = `translateX(-${newIndex * itemWidth}px)`;
   }
 
   // Começa após os prepends
