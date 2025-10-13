@@ -65,6 +65,54 @@ const destinos = [
   },
 ];
 
+// =============================
+// Dados de eventos (placeholder)
+// =============================
+const eventos = [
+  {
+    id: 'carnaval-luanda',
+    nome: 'Carnaval de Luanda',
+    local: 'Luanda',
+    img: 'imagens/carnaval-luanda.jpg',
+    descricao: 'Desfile com grupos carnavalescos, música, dança e tradição.'
+  },
+  {
+    id: 'expo-benguela',
+    nome: 'Expo Benguela',
+    local: 'Benguela',
+    img: 'imagens/expo-benguela.jpg',
+    descricao: 'Feira de negócios, cultura e gastronomia regional.'
+  },
+  {
+    id: 'festival-musica-huambo',
+    nome: 'Festival de Música do Huambo',
+    local: 'Huambo',
+    img: 'imagens/festival-huambo.jpg',
+    descricao: 'Artistas locais e nacionais celebrando a música angolana.'
+  },
+  {
+    id: 'feira-artesanato-lubango',
+    nome: 'Feira de Artesanato do Lubango',
+    local: 'Lubango',
+    img: 'imagens/feira-lubango.jpg',
+    descricao: 'Peças artesanais, esculturas e tecidos tradicionais.'
+  },
+  {
+    id: 'festas-tradicionais-kuito',
+    nome: 'Festas Tradicionais do Kuito',
+    local: 'Kuito, Bié',
+    img: 'imagens/festas-kuito.jpg',
+    descricao: 'Celebrações comunitárias com danças e rituais.'
+  },
+  {
+    id: 'maratona-luanda',
+    nome: 'Maratona de Luanda',
+    local: 'Luanda',
+    img: 'imagens/maratona-luanda.jpg',
+    descricao: 'Evento desportivo com atletas nacionais e internacionais.'
+  }
+];
+
 // Render utilitário
 function createDestinoCard(destino) {
   const card = document.createElement('article');
@@ -94,6 +142,36 @@ function renderDestinosGrid() {
   if (!grid) return;
   grid.innerHTML = '';
   destinos.forEach((d) => grid.appendChild(createDestinoCard(d)));
+}
+
+function createEventoCard(evento) {
+  const card = document.createElement('article');
+  card.className = 'card';
+  card.innerHTML = `
+    <div class="card__media">
+      <img src="${evento.img}" alt="${evento.nome}">
+    </div>
+    <div class="card__body">
+      <h3 class="card__title">${evento.nome}</h3>
+      <div class="card__meta">${evento.local}</div>
+    </div>
+  `;
+  card.addEventListener('click', () => openDestinoModal(evento));
+  return card;
+}
+
+function renderEventosHome() {
+  const container = document.getElementById('eventosHome');
+  if (!container) return;
+  container.innerHTML = '';
+  eventos.slice(0, 6).forEach((e) => container.appendChild(createEventoCard(e)));
+}
+
+function renderEventosGrid() {
+  const grid = document.getElementById('eventosGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  eventos.forEach((e) => grid.appendChild(createEventoCard(e)));
 }
 
 // Modal
@@ -130,6 +208,8 @@ modalEl && modalEl.addEventListener('click', (e) => { if (e.target === modalEl) 
 document.addEventListener('DOMContentLoaded', () => {
   renderDestinosHome();
   renderDestinosGrid();
+  renderEventosHome();
+  renderEventosGrid();
 });
 
 // =============================

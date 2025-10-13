@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Área de Utilizador - Descubra Angola</title>
+  <title>Eventos - Descubra Angola</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -32,11 +32,23 @@
   </header>
 
   <section class="section-header">
-    <h2>Área de Utilizador</h2>
+    <h2>Eventos culturais</h2>
   </section>
-  <div style="padding: 0 30px 30px;">
-    <p>Futuramente: login, registo e gestão de reservas.</p>
-    <p>Adiciona imagens reais na pasta <code>imagens/</code> quando quiseres ilustrar perfis.</p>
+  <div class="container">
+    <div id="eventosGrid" class="cards cards--eventos"></div>
+  </div>
+
+  <!-- Modal de Detalhes do Evento -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__dialog">
+      <button class="modal__close" aria-label="Fechar">&times;</button>
+      <div class="modal__media"><img id="modalImg" alt="" /></div>
+      <div class="modal__content">
+        <h2 id="modalTitulo"></h2>
+        <div id="modalLocal" class="modal__meta"></div>
+        <p id="modalDescricao"></p>
+      </div>
+    </div>
   </div>
 
   <script src="script.js"></script>

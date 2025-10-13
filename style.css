@@ -183,6 +183,7 @@ body {
 .cards--destinos {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
+.cards--eventos { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
 .card {
   background: var(--color-surface);
