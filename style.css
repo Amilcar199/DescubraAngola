@@ -278,3 +278,23 @@ body {
 .roteiro-card h3 { margin: 0 0 6px 0; }
 .roteiro-card p { margin: 0; color: var(--color-muted); }
 
+/* Footer */
+.site-footer {
+  background: #0b0b0b;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  padding: 36px 0 18px;
+}
+.footer__grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr .8fr;
+  gap: 24px;
+}
+@media (max-width: 900px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .footer__grid { grid-template-columns: 1fr; } }
+.footer__brand p { color: var(--color-muted); margin: 8px 0 0 0; }
+.footer__nav h4 { margin: 0 0 10px 0; font-size: 1rem; color: var(--color-text); }
+.footer__nav ul { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
+.footer__nav a { color: var(--color-muted); text-decoration: none; }
+.footer__nav a:hover { color: var(--color-text); }
+.footer__bottom { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 22px; padding-top: 12px; color: var(--color-muted); font-size: .92rem; }
+
