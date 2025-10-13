@@ -131,3 +131,72 @@ document.addEventListener('DOMContentLoaded', () => {
   renderDestinosHome();
   renderDestinosGrid();
 });
+
+// =============================
+// Carrossel de Roteiros (Home)
+// =============================
+const roteiros = [
+  { titulo: 'Luanda cultural', desc: 'Museus, Marginal e Ilha.' },
+  { titulo: 'Aventura na Huíla', desc: 'Tundavala e Serra da Leba.' },
+  { titulo: 'Costa de Benguela', desc: 'Praias e gastronomia.' },
+  { titulo: 'Serra da Leba', desc: 'Miradouros e curvas icónicas.' },
+  { titulo: 'Malanje total', desc: 'Kalandula e Pungo Andongo.' },
+  { titulo: 'Safari em Quiçama', desc: 'Fauna e paisagens savânicas.' },
+];
+
+function renderRoteirosCarousel() {
+  const vp = document.getElementById('carouselRoteiros');
+  if (!vp) return;
+  vp.innerHTML = '';
+  roteiros.forEach((r) => {
+    const item = document.createElement('article');
+    item.className = 'roteiro-card';
+    item.innerHTML = `<h3>${r.titulo}</h3><p>${r.desc}</p>`;
+    vp.appendChild(item);
+  });
+
+  let index = 0;
+  const leftBtn = document.querySelector('.carousel__arrow--left');
+  const rightBtn = document.querySelector('.carousel__arrow--right');
+  const visible = 3; // 3 visíveis
+
+  function update() {
+    const width = vp.clientWidth;
+    const gap = 16; // mesmo do CSS
+    const itemWidth = (width - (visible - 1) * gap) / visible;
+    vp.style.transform = `translateX(-${index * (itemWidth + gap)}px)`;
+    vp.style.transition = 'transform .35s ease';
+  }
+
+  rightBtn && rightBtn.addEventListener('click', () => {
+    const maxIndex = Math.max(0, roteiros.length - visible);
+    index = Math.min(maxIndex, index + 1);
+    update();
+  });
+  leftBtn && leftBtn.addEventListener('click', () => {
+    index = Math.max(0, index - 1);
+    update();
+  });
+
+  window.addEventListener('resize', update);
+  update();
+}
+
+document.addEventListener('DOMContentLoaded', renderRoteirosCarousel);
+
+// Página de Roteiros (recomendações)
+function renderRoteirosPage() {
+  const page = document.getElementById('roteirosPage');
+  if (!page) return;
+  page.innerHTML = '';
+  // Construção diferente: destaque + lista
+  roteiros.forEach((r, i) => {
+    const item = document.createElement('article');
+    item.className = 'roteiro-card';
+    const prefixo = i === 0 ? 'Destaque: ' : '';
+    item.innerHTML = `<h3>${prefixo}${r.titulo}</h3><p>${r.desc}</p>`;
+    page.appendChild(item);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', renderRoteirosPage);

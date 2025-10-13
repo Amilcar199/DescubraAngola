@@ -241,3 +241,34 @@ body {
 .modal__content h2 { margin: 0 0 6px 0; }
 .modal__meta { color: var(--color-yellow); font-weight: 600; margin-bottom: 10px; }
 
+/* Carrossel de Roteiros */
+.carousel {
+  position: relative;
+}
+.carousel__viewport {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: calc((100% - 2 * 16px) / 3);
+  gap: 16px;
+  overflow: hidden;
+}
+.carousel__arrow {
+  position: absolute;
+  top: 50%; transform: translateY(-50%);
+  width: 40px; height: 40px;
+  border-radius: 50%; border: 0;
+  background: rgba(0,0,0,0.55);
+  color: #fff; cursor: pointer;
+}
+.carousel__arrow--left { left: -6px; }
+.carousel__arrow--right { right: -6px; }
+
+.roteiro-card {
+  background: var(--color-surface);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 14px;
+}
+.roteiro-card h3 { margin: 0 0 6px 0; }
+.roteiro-card p { margin: 0; color: var(--color-muted); }
+

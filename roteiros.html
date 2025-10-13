@@ -7,36 +7,37 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <div class="logo">ANGOLA</div>
-    <nav>
-      <ul>
-        <li><a href="destinos.html">Destinos</a></li>
-        <li><a href="roteiros.html">Roteiros</a></li>
-        <li><a href="reservas.html">Reservas</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="area-utilizador.html" class="btn-login">Área de Utilizador</a></li>
-      </ul>
-    </nav>
+  <header class="site-header">
+    <div class="container header__inner">
+      <a href="index.html" class="brand" aria-label="Descubra Angola">
+        A<span class="brand__ng">NG</span>OLA
+      </a>
+      <button class="nav-toggle" aria-expanded="false" aria-controls="site-nav">
+        <span class="sr-only">Abrir menu</span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </button>
+      <nav id="site-nav" class="nav">
+        <ul class="nav__list">
+          <li><a href="destinos.html">Destinos</a></li>
+          <li><a href="roteiros.html">Roteiros</a></li>
+          <li><a href="reservas.html">Reservas</a></li>
+          <li><a href="blog.html">Blog</a></li>
+          <li><a class="cta" href="area-utilizador.html">Área do Utilizador</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <section class="section-header">
-    <h2>Roteiros Recomendados</h2>
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Roteiros recomendados</h2>
+      </div>
+      <div class="cards cards--destinos" id="roteirosPage"></div>
+    </div>
   </section>
-  <div class="roteiros-container" id="roteirosContainer">
-    <div class="roteiro-card">
-      <h3>Aventura no Sul de Angola</h3>
-      <p>Explora as maravilhas do sul de Angola.</p>
-    </div>
-    <div class="roteiro-card">
-      <h3>Tour Cultural em Luanda</h3>
-      <p>Conheça a cultura, música e gastronomia.</p>
-    </div>
-    <div class="roteiro-card">
-      <h3>Exploração Costeira</h3>
-      <p>Descubra praias e paisagens incríveis.</p>
-    </div>
-  </div>
 
   <script src="script.js"></script>
 </body>
