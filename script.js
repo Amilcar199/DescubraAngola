@@ -160,26 +160,70 @@ function renderRoteirosCarousel() {
   const rightBtn = document.querySelector('.carousel__arrow--right');
   const visible = 3; // 3 visíveis
 
-  function update() {
+  // Clone para looping infinito (efeito circular suave)
+  // Clonamos o primeiro e último bloco de 3 itens para as extremidades
+  const group = visible;
+  const prepend = roteiros.slice(-group);
+  const append = roteiros.slice(0, group);
+
+  const items = Array.from(vp.children);
+  // Prepend
+  prepend.forEach((r) => {
+    const item = document.createElement('article');
+    item.className = 'roteiro-card';
+    item.innerHTML = `<h3>${r.titulo}</h3><p>${r.desc}</p>`;
+    vp.insertBefore(item, vp.firstChild);
+  });
+  // Append
+  append.forEach((r) => {
+    const item = document.createElement('article');
+    item.className = 'roteiro-card';
+    item.innerHTML = `<h3>${r.titulo}</h3><p>${r.desc}</p>`;
+    vp.appendChild(item);
+  });
+
+  const gap = 16; // mesmo do CSS
+
+  function getItemWidth() {
     const width = vp.clientWidth;
-    const gap = 16; // mesmo do CSS
-    const itemWidth = (width - (visible - 1) * gap) / visible;
-    vp.style.transform = `translateX(-${index * (itemWidth + gap)}px)`;
-    vp.style.transition = 'transform .35s ease';
+    return (width - (visible - 1) * gap) / visible;
+  }
+
+  function setTranslate(newIndex, animated = true) {
+    const itemWidth = getItemWidth();
+    vp.style.transition = animated ? 'transform .35s ease' : 'none';
+    vp.style.transform = `translateX(-${newIndex * (itemWidth + gap)}px)`;
+  }
+
+  // Começa após os prepends
+  index = group;
+  setTranslate(index, false);
+
+  function snapLoop() {
+    const maxRealIndex = group + roteiros.length - 1;
+    if (index > maxRealIndex) {
+      index = group; // volta ao início real
+      setTranslate(index, false);
+    } else if (index < group) {
+      index = group + roteiros.length - 1; // vai ao fim real
+      setTranslate(index, false);
+    }
   }
 
   rightBtn && rightBtn.addEventListener('click', () => {
-    const maxIndex = Math.max(0, roteiros.length - visible);
-    index = Math.min(maxIndex, index + 1);
-    update();
-  });
-  leftBtn && leftBtn.addEventListener('click', () => {
-    index = Math.max(0, index - 1);
-    update();
+    index += 1;
+    setTranslate(index, true);
+    // Após a animação, corrigir para o índice equivalente
+    setTimeout(snapLoop, 380);
   });
 
-  window.addEventListener('resize', update);
-  update();
+  leftBtn && leftBtn.addEventListener('click', () => {
+    index -= 1;
+    setTranslate(index, true);
+    setTimeout(snapLoop, 380);
+  });
+
+  window.addEventListener('resize', () => setTranslate(index, false));
 }
 
 document.addEventListener('DOMContentLoaded', renderRoteirosCarousel);

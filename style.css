@@ -251,6 +251,7 @@ body {
   grid-auto-columns: calc((100% - 2 * 16px) / 3);
   gap: 16px;
   overflow: hidden;
+  will-change: transform;
 }
 .carousel__arrow {
   position: absolute;
@@ -259,15 +260,21 @@ body {
   border-radius: 50%; border: 0;
   background: rgba(0,0,0,0.55);
   color: #fff; cursor: pointer;
+  z-index: 2;
+  box-shadow: var(--shadow-1);
 }
-.carousel__arrow--left { left: -6px; }
-.carousel__arrow--right { right: -6px; }
+.carousel__arrow--left { left: 6px; }
+.carousel__arrow--right { right: 6px; }
 
 .roteiro-card {
   background: var(--color-surface);
   border: 1px solid rgba(255,255,255,0.06);
   border-radius: 12px;
   padding: 14px;
+  min-height: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 .roteiro-card h3 { margin: 0 0 6px 0; }
 .roteiro-card p { margin: 0; color: var(--color-muted); }
