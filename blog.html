@@ -31,12 +31,18 @@
     </div>
   </header>
 
-  <section class="section-header">
-    <h2>Blog Turístico</h2>
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="align-items:center;">
+        <h2>Blog Turístico</h2>
+        <div style="margin-left:auto; display:flex; gap:8px;">
+          <input id="blogSearch" class="input" placeholder="Pesquisar artigos..."/>
+          <button id="blogSearchBtn" class="btn btn--ghost btn--sm">Buscar</button>
+        </div>
+      </div>
+      <div id="blogGrid" class="cards cards--destinos"></div>
+    </div>
   </section>
-  <div style="padding: 0 30px 30px;">
-    <p>Artigos e dicas sobre viagens em Angola (em breve).</p>
-  </div>
 
   <footer class="site-footer">
     <div class="container">

@@ -298,3 +298,16 @@ body {
 .footer__nav a:hover { color: var(--color-text); }
 .footer__bottom { border-top: 1px solid rgba(255,255,255,0.06); margin-top: 22px; padding-top: 12px; color: var(--color-muted); font-size: .92rem; }
 
+/* Form Reservas */
+.form__row {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 960px) { .form__row { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .form__row { grid-template-columns: 1fr; } }
+.form__field { display: grid; gap: 6px; }
+.form__field span { font-size: .92rem; color: var(--color-muted); }
+.input { color: var(--color-text); background: #171717; border: 1px solid rgba(255,255,255,.08); border-radius: 8px; padding: 10px 12px; }
+.select { appearance: none; }
+

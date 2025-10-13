@@ -328,3 +328,103 @@ function renderRoteirosPage() {
 }
 
 document.addEventListener('DOMContentLoaded', renderRoteirosPage);
+
+// =============================
+// Reservas (simulação)
+// =============================
+const ofertas = [
+  { id: 'of1', titulo: 'Hotel Baía Azul', tipo: 'hotel', destino: 'Benguela', img: 'imagens/hotel-baia.jpg', desc: 'Frente-mar, pequeno-almoço incluído.' },
+  { id: 'of2', titulo: 'Lodge Tundavala View', tipo: 'lodge', destino: 'Lubango', img: 'imagens/lodge-tundavala.jpg', desc: 'Vista para a Tundavala, trilhas próximas.' },
+  { id: 'of3', titulo: 'Guesthouse Morro do Môco', tipo: 'guesthouse', destino: 'Huambo', img: 'imagens/guest-morro.jpg', desc: 'Aconchegante, ideal para trekkers.' },
+  { id: 'of4', titulo: 'Hotel Kalandula Falls', tipo: 'hotel', destino: 'Malanje', img: 'imagens/hotel-kalandula.jpg', desc: 'Próximo às quedas, quartos com varanda.' },
+];
+
+function renderOfertas(list) {
+  const wrap = document.getElementById('reservasResultados');
+  if (!wrap) return;
+  wrap.innerHTML = '';
+  list.forEach((o) => {
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card__media"><img src="${o.img}" alt="${o.titulo}"></div>
+      <div class="card__body">
+        <h3 class="card__title">${o.titulo}</h3>
+        <div class="card__meta">${o.destino} · ${o.tipo}</div>
+        <p>${o.desc}</p>
+      </div>`;
+    card.addEventListener('click', () => openDestinoModal({ nome: o.titulo, local: `${o.destino} · ${o.tipo}`, descricao: o.desc, img: o.img }));
+    wrap.appendChild(card);
+  });
+}
+
+function initReservas() {
+  const selectDestino = document.getElementById('resDestino');
+  const form = document.getElementById('formReservas');
+  if (!selectDestino || !form) return;
+
+  // popular destinos únicos
+  const destinosSet = new Set(destinos.map((d) => d.local.split(',')[0]).concat(ofertas.map((o) => o.destino)));
+  const unique = Array.from(destinosSet).sort();
+  unique.forEach((d) => {
+    const opt = document.createElement('option');
+    opt.value = d;
+    opt.textContent = d;
+    selectDestino.appendChild(opt);
+  });
+
+  renderOfertas(ofertas);
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const destino = document.getElementById('resDestino').value;
+    const tipo = document.getElementById('resTipo').value;
+    let list = ofertas.slice();
+    if (destino) list = list.filter((o) => o.destino === destino);
+    if (tipo) list = list.filter((o) => o.tipo === tipo);
+    renderOfertas(list);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initReservas);
+
+// =============================
+// Blog (cards + busca)
+// =============================
+const posts = [
+  { id: 'p1', titulo: 'Guia rápido de Luanda', resumo: 'O que ver e comer em 48h.', img: 'imagens/post-luanda.jpg' },
+  { id: 'p2', titulo: 'Roteiro Serra da Leba', resumo: 'Curvas, miradouros e segurança.', img: 'imagens/post-leba.jpg' },
+  { id: 'p3', titulo: 'Praias de Benguela', resumo: 'Top 5 praias imperdíveis.', img: 'imagens/post-benguela.jpg' },
+  { id: 'p4', titulo: 'Kalandula essencial', resumo: 'Quando ir e onde ficar.', img: 'imagens/post-kalandula.jpg' },
+];
+
+function renderPosts(list) {
+  const grid = document.getElementById('blogGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  list.forEach((p) => {
+    const card = document.createElement('article');
+    card.className = 'card';
+    card.innerHTML = `
+      <div class="card__media"><img src="${p.img}" alt="${p.titulo}"></div>
+      <div class="card__body">
+        <h3 class="card__title">${p.titulo}</h3>
+        <p>${p.resumo}</p>
+      </div>`;
+    grid.appendChild(card);
+  });
+}
+
+function initBlog() {
+  const input = document.getElementById('blogSearch');
+  const btn = document.getElementById('blogSearchBtn');
+  if (!input || !btn) return;
+  renderPosts(posts);
+  btn.addEventListener('click', () => {
+    const q = input.value.trim().toLowerCase();
+    const filtered = q ? posts.filter((p) => p.titulo.toLowerCase().includes(q) || p.resumo.toLowerCase().includes(q)) : posts;
+    renderPosts(filtered);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initBlog);

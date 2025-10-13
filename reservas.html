@@ -31,12 +31,58 @@
     </div>
   </header>
 
-  <section class="section-header">
-    <h2>Reservas</h2>
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Reservas</h2>
+      </div>
+
+      <form id="formReservas" class="form form--reservas">
+        <div class="form__row">
+          <label class="form__field">
+            <span>Destino</span>
+            <select id="resDestino" class="input select"></select>
+          </label>
+          <label class="form__field">
+            <span>Check-in</span>
+            <input type="date" id="resCheckIn" class="input" />
+          </label>
+          <label class="form__field">
+            <span>Check-out</span>
+            <input type="date" id="resCheckOut" class="input" />
+          </label>
+          <label class="form__field">
+            <span>Pessoas</span>
+            <input type="number" id="resPessoas" class="input" min="1" value="2" />
+          </label>
+          <label class="form__field">
+            <span>Tipo</span>
+            <select id="resTipo" class="input select">
+              <option value="">Qualquer</option>
+              <option value="hotel">Hotel</option>
+              <option value="lodge">Lodge</option>
+              <option value="guesthouse">Guesthouse</option>
+            </select>
+          </label>
+          <button type="submit" class="btn btn--primary" style="align-self:end;">Buscar</button>
+        </div>
+      </form>
+
+      <div id="reservasResultados" class="cards cards--destinos" style="margin-top:16px;"></div>
+    </div>
   </section>
-  <div style="padding: 0 30px 30px;">
-    <p>Em breve poderás simular reservas aqui.</p>
-    <p>Adiciona imagens reais na pasta <code>imagens/</code> e usa nomes como <code>hotel.jpg</code>.</p>
+
+  <!-- Modal para detalhes -->
+  <div id="modal" class="modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal__dialog">
+      <button class="modal__close" aria-label="Fechar">&times;</button>
+      <div class="modal__media"><img id="modalImg" alt="" /></div>
+      <div class="modal__content">
+        <h2 id="modalTitulo"></h2>
+        <div id="modalLocal" class="modal__meta"></div>
+        <p id="modalDescricao"></p>
+      </div>
+    </div>
   </div>
 
   <footer class="site-footer">
