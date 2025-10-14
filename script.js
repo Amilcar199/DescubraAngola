@@ -119,7 +119,7 @@ function createDestinoCard(destino) {
   card.className = 'card';
   card.innerHTML = `
     <div class="card__media">
-      <img src="${destino.img}" alt="${destino.nome}" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Fenda%20da%20Tundavala%20-%20Lubango.jpg?width=1200'">
+      <img src="${destino.img}" alt="${destino.nome}" onerror="fallbackDestino(this)">
     </div>
     <div class="card__body">
       <h3 class="card__title">${destino.nome}</h3>
@@ -149,7 +149,7 @@ function createEventoCard(evento) {
   card.className = 'card';
   card.innerHTML = `
     <div class="card__media">
-      <img src="${evento.img}" alt="${evento.nome}" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Fenda%20da%20Tundavala%20-%20Lubango.jpg?width=1200'">
+      <img src="${evento.img}" alt="${evento.nome}" onerror="fallbackEvento(this)">
     </div>
     <div class="card__body">
       <h3 class="card__title">${evento.nome}</h3>
@@ -203,6 +203,33 @@ function closeModal() {
 
 modalCloseBtn && modalCloseBtn.addEventListener('click', closeModal);
 modalEl && modalEl.addEventListener('click', (e) => { if (e.target === modalEl) closeModal(); });
+
+// Fallbacks de imagem específicos
+function fallbackDestino(imgEl) {
+  imgEl.onerror = null;
+  // Escolhe fallback por nome aproximado
+  const name = (imgEl.alt || '').toLowerCase();
+  if (name.includes('tundavala')) {
+    imgEl.src = 'https://commons.wikimedia.org/wiki/Special:FilePath/Fenda%20da%20Tundavala%20-%20Lubango.jpg?width=1200';
+  } else if (name.includes('kalandula')) {
+    imgEl.src = 'https://commons.wikimedia.org/wiki/Special:FilePath/Kalandula%20Falls%20Malanje%20Angola.jpg?width=1200';
+  } else if (name.includes('baía') || name.includes('baia')) {
+    imgEl.src = 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Benguela_Baia_Azul.jpg';
+  } else if (name.includes('môco') || name.includes('moco')) {
+    imgEl.src = 'https://upload.wikimedia.org/wikipedia/commons/5/56/Morro_do_Moco.jpg';
+  } else if (name.includes('quiçama') || name.includes('quicama')) {
+    imgEl.src = 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Kissama_national_park_angola.jpg';
+  } else if (name.includes('pungo') || name.includes('pedras')) {
+    imgEl.src = 'https://upload.wikimedia.org/wikipedia/commons/6/6c/Pungo_Andongo_0001.jpg';
+  } else {
+    imgEl.src = 'https://commons.wikimedia.org/wiki/Special:FilePath/Fenda%20da%20Tundavala%20-%20Lubango.jpg?width=1200';
+  }
+}
+
+function fallbackEvento(imgEl) {
+  imgEl.onerror = null;
+  imgEl.src = 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Flag_of_Angola.svg';
+}
 
 // Inicialização
 document.addEventListener('DOMContentLoaded', () => {
