@@ -252,6 +252,10 @@ body {
 .modal__content h2 { margin: 0 0 6px 0; }
 .modal__meta { color: var(--color-yellow); font-weight: 600; margin-bottom: 10px; }
 
+/* Animações suaves */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+.is-in { opacity: 1; transform: translateY(0); }
+
 /* Carrossel de Roteiros */
 .carousel {
   position: relative;

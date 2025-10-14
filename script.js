@@ -466,3 +466,53 @@ function initAuth() {
 }
 
 document.addEventListener('DOMContentLoaded', initAuth);
+
+// =============================
+// Guard: bloquear roteiros sem login
+// =============================
+function guardRoteirosAccess() {
+  const isRoteirosPage = !!document.getElementById('roteirosPage');
+  if (!isRoteirosPage) return;
+  const logged = !!localStorage.getItem('da_user_email');
+  if (!logged) {
+    window.location.href = 'area-utilizador.html?next=roteiros.html';
+  }
+}
+
+document.addEventListener('DOMContentLoaded', guardRoteirosAccess);
+
+// =============================
+// Animações de entrada suaves
+// =============================
+function applyRevealAnimations() {
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-in');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, { root: null, threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+
+  // Alvos: itens de cards, cabeçalhos e itens do carrossel
+  const groups = [
+    ...document.querySelectorAll('.cards'),
+    ...document.querySelectorAll('.section-header'),
+    ...document.querySelectorAll('.carousel__viewport')
+  ];
+  groups.forEach((group) => {
+    const children = group.classList.contains('section-header')
+      ? Array.from(group.children)
+      : Array.from(group.children);
+    children.forEach((el, i) => {
+      el.classList.add('reveal');
+      el.style.transitionDelay = `${Math.min(i * 60, 360)}ms`;
+      observer.observe(el);
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', applyRevealAnimations);
+
+// Reaplicar após renders dinâmicos
+const _apply = () => applyRevealAnimations();
