@@ -207,28 +207,12 @@ modalEl && modalEl.addEventListener('click', (e) => { if (e.target === modalEl) 
 // Fallbacks de imagem específicos
 function fallbackDestino(imgEl) {
   imgEl.onerror = null;
-  // Escolhe fallback por nome aproximado
-  const name = (imgEl.alt || '').toLowerCase();
-  if (name.includes('tundavala')) {
-    imgEl.src = 'https://commons.wikimedia.org/wiki/Special:FilePath/Fenda%20da%20Tundavala%20-%20Lubango.jpg?width=1200';
-  } else if (name.includes('kalandula')) {
-    imgEl.src = 'https://commons.wikimedia.org/wiki/Special:FilePath/Kalandula%20Falls%20Malanje%20Angola.jpg?width=1200';
-  } else if (name.includes('baía') || name.includes('baia')) {
-    imgEl.src = 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Benguela_Baia_Azul.jpg';
-  } else if (name.includes('môco') || name.includes('moco')) {
-    imgEl.src = 'https://upload.wikimedia.org/wikipedia/commons/5/56/Morro_do_Moco.jpg';
-  } else if (name.includes('quiçama') || name.includes('quicama')) {
-    imgEl.src = 'https://upload.wikimedia.org/wikipedia/commons/0/0b/Kissama_national_park_angola.jpg';
-  } else if (name.includes('pungo') || name.includes('pedras')) {
-    imgEl.src = 'https://upload.wikimedia.org/wikipedia/commons/6/6c/Pungo_Andongo_0001.jpg';
-  } else {
-    imgEl.src = 'https://commons.wikimedia.org/wiki/Special:FilePath/Fenda%20da%20Tundavala%20-%20Lubango.jpg?width=1200';
-  }
+  imgEl.src = 'https://placehold.co/600x400?text=Destino';
 }
 
 function fallbackEvento(imgEl) {
   imgEl.onerror = null;
-  imgEl.src = 'https://upload.wikimedia.org/wikipedia/commons/7/7f/Flag_of_Angola.svg';
+  imgEl.src = 'https://placehold.co/600x400?text=Evento';
 }
 
 // Inicialização
