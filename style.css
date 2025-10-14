@@ -329,4 +329,29 @@ body {
 
 /* Auth */
 .auth .muted { color: var(--color-muted); margin-top: 8px; }
+.auth {
+  display: grid;
+  gap: 16px;
+}
+.auth--login .form {
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--shadow-1);
+}
+.input:focus {
+  outline: none;
+  border-color: var(--color-yellow);
+  box-shadow: 0 0 0 3px rgba(255,204,0,.15);
+}
+.toggle-pwd {
+  position: relative;
+  margin-top: 22px;
+}
+.toggle-pwd button {
+  position: absolute;
+  right: 10px; top: 50%; transform: translateY(-50%);
+  border: 0; background: transparent; color: var(--color-muted); cursor: pointer;
+}
 
