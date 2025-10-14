@@ -53,6 +53,10 @@
           </div>
         </form>
         <p class="muted">Ao entrar, terás acesso a roteiros personalizados.</p>
+        <div class="auth__switch">
+          <span class="muted">Não tens conta?</span>
+          <button id="toRegister" type="button" class="btn btn--ghost btn--sm">Criar conta</button>
+        </div>
       </div>
 
       <div id="accountView" class="auth auth--account" style="display:none;">
@@ -60,6 +64,34 @@
         <div class="hero__actions" style="margin-top:10px;">
           <a class="btn btn--primary" href="roteiros.html">Ver roteiros personalizados</a>
           <button id="logoutBtn" class="btn btn--ghost" type="button">Terminar sessão</button>
+        </div>
+      </div>
+
+      <div id="registerView" class="auth auth--login" style="display:none;">
+        <form id="registerForm" class="form">
+          <div class="form__row">
+            <label class="form__field">
+              <span>Nome</span>
+              <input id="regName" type="text" class="input" required />
+            </label>
+            <label class="form__field">
+              <span>Email</span>
+              <input id="regEmail" type="email" class="input" required />
+            </label>
+            <label class="form__field">
+              <span>Palavra‑passe</span>
+              <input id="regPassword" type="password" class="input" required />
+            </label>
+            <label class="form__field">
+              <span>Confirmar palavra‑passe</span>
+              <input id="regPassword2" type="password" class="input" required />
+            </label>
+            <button type="submit" class="btn btn--primary" style="align-self:end;">Registar</button>
+          </div>
+        </form>
+        <div class="auth__switch">
+          <span class="muted">Já tens conta?</span>
+          <button id="toLogin" type="button" class="btn btn--ghost btn--sm">Entrar</button>
         </div>
       </div>
     </div>

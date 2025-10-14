@@ -439,6 +439,9 @@ function initAuth() {
   const accountEmail = document.getElementById('accountEmail');
   const logoutBtn = document.getElementById('logoutBtn');
   const togglePwd = document.getElementById('togglePwd');
+  const toRegister = document.getElementById('toRegister');
+  const toLogin = document.getElementById('toLogin');
+  const registerView = document.getElementById('registerView');
   if (!form || !loginView || !accountView) return;
 
   const saved = localStorage.getItem('da_user_email');
@@ -469,6 +472,30 @@ function initAuth() {
     const input = document.getElementById('loginPassword');
     if (!input) return;
     input.type = input.type === 'password' ? 'text' : 'password';
+  });
+
+  toRegister && toRegister.addEventListener('click', () => {
+    loginView.style.display = 'none';
+    registerView && (registerView.style.display = '');
+  });
+  toLogin && toLogin.addEventListener('click', () => {
+    registerView && (registerView.style.display = 'none');
+    loginView.style.display = '';
+  });
+
+  const registerForm = document.getElementById('registerForm');
+  registerForm && registerForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('regName').value.trim();
+    const email = document.getElementById('regEmail').value.trim();
+    const p1 = document.getElementById('regPassword').value;
+    const p2 = document.getElementById('regPassword2').value;
+    if (!name || !email || !p1 || p1 !== p2) return;
+    // simula criação de conta
+    localStorage.setItem('da_user_email', email);
+    registerView && (registerView.style.display = 'none');
+    accountView.style.display = '';
+    accountEmail && (accountEmail.textContent = email);
   });
 }
 
