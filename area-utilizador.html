@@ -31,13 +31,38 @@
     </div>
   </header>
 
-  <section class="section-header">
-    <h2>Área de Utilizador</h2>
+  <section class="section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Área de Utilizador</h2>
+      </div>
+
+      <div id="loginView" class="auth auth--login">
+        <form id="loginForm" class="form">
+          <div class="form__row">
+            <label class="form__field">
+              <span>Email</span>
+              <input id="loginEmail" type="email" class="input" required />
+            </label>
+            <label class="form__field">
+              <span>Palavra‑passe</span>
+              <input id="loginPassword" type="password" class="input" required />
+            </label>
+            <button type="submit" class="btn btn--primary" style="align-self:end;">Entrar</button>
+          </div>
+        </form>
+        <p class="muted">Ao entrar, terás acesso a roteiros personalizados.</p>
+      </div>
+
+      <div id="accountView" class="auth auth--account" style="display:none;">
+        <p>Bem‑vindo, <strong id="accountEmail"></strong></p>
+        <div class="hero__actions" style="margin-top:10px;">
+          <a class="btn btn--primary" href="roteiros.html">Ver roteiros personalizados</a>
+          <button id="logoutBtn" class="btn btn--ghost" type="button">Terminar sessão</button>
+        </div>
+      </div>
+    </div>
   </section>
-  <div style="padding: 0 30px 30px;">
-    <p>Futuramente: login, registo e gestão de reservas.</p>
-    <p>Adiciona imagens reais na pasta <code>imagens/</code> quando quiseres ilustrar perfis.</p>
-  </div>
 
   <footer class="site-footer">
     <div class="container">

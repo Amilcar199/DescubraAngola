@@ -428,3 +428,41 @@ function initBlog() {
 }
 
 document.addEventListener('DOMContentLoaded', initBlog);
+
+// =============================
+// Login simples (simulação)
+// =============================
+function initAuth() {
+  const form = document.getElementById('loginForm');
+  const loginView = document.getElementById('loginView');
+  const accountView = document.getElementById('accountView');
+  const accountEmail = document.getElementById('accountEmail');
+  const logoutBtn = document.getElementById('logoutBtn');
+  if (!form || !loginView || !accountView) return;
+
+  const saved = localStorage.getItem('da_user_email');
+  if (saved) {
+    loginView.style.display = 'none';
+    accountView.style.display = '';
+    accountEmail && (accountEmail.textContent = saved);
+  }
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const email = document.getElementById('loginEmail').value.trim();
+    const pwd = document.getElementById('loginPassword').value;
+    if (!email || !pwd) return;
+    localStorage.setItem('da_user_email', email);
+    loginView.style.display = 'none';
+    accountView.style.display = '';
+    accountEmail && (accountEmail.textContent = email);
+  });
+
+  logoutBtn && logoutBtn.addEventListener('click', () => {
+    localStorage.removeItem('da_user_email');
+    accountView.style.display = 'none';
+    loginView.style.display = '';
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initAuth);
