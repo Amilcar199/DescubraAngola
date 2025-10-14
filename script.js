@@ -216,12 +216,12 @@ document.addEventListener('DOMContentLoaded', () => {
 // Carrossel de Roteiros (Home)
 // =============================
 const roteiros = [
-  { titulo: 'Luanda cultural', desc: 'Museus, Marginal e Ilha.' },
-  { titulo: 'Aventura na Huíla', desc: 'Tundavala e Serra da Leba.' },
-  { titulo: 'Costa de Benguela', desc: 'Praias e gastronomia.' },
-  { titulo: 'Serra da Leba', desc: 'Miradouros e curvas icónicas.' },
-  { titulo: 'Malanje total', desc: 'Kalandula e Pungo Andongo.' },
-  { titulo: 'Safari em Quiçama', desc: 'Fauna e paisagens savânicas.' },
+  { titulo: 'Luanda cultural', desc: 'Museus, Marginal e Ilha.', img: 'imagens/rot-luanda.jpg' },
+  { titulo: 'Aventura na Huíla', desc: 'Tundavala e Serra da Leba.', img: 'imagens/rot-huila.jpg' },
+  { titulo: 'Costa de Benguela', desc: 'Praias e gastronomia.', img: 'imagens/rot-benguela.jpg' },
+  { titulo: 'Serra da Leba', desc: 'Miradouros e curvas icónicas.', img: 'imagens/rot-leba.jpg' },
+  { titulo: 'Malanje total', desc: 'Kalandula e Pungo Andongo.', img: 'imagens/rot-malanje.jpg' },
+  { titulo: 'Safari em Quiçama', desc: 'Fauna e paisagens savânicas.', img: 'imagens/rot-quicama.jpg' },
 ];
 
 function renderRoteirosCarousel() {
@@ -232,7 +232,14 @@ function renderRoteirosCarousel() {
   const baseItems = roteiros.map((r) => {
     const item = document.createElement('article');
     item.className = 'roteiro-card';
-    item.innerHTML = `<h3>${r.titulo}</h3><p>${r.desc}</p>`;
+    item.innerHTML = `
+      <div class="card__media">
+        <img src="${r.img}" alt="${r.titulo}" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Roteiro'">
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">${r.titulo}</h3>
+        <p>${r.desc}</p>
+      </div>`;
     return item;
   });
   baseItems.forEach((el) => vp.appendChild(el));
@@ -252,14 +259,28 @@ function renderRoteirosCarousel() {
   prepend.forEach((r) => {
     const item = document.createElement('article');
     item.className = 'roteiro-card';
-    item.innerHTML = `<h3>${r.titulo}</h3><p>${r.desc}</p>`;
+    item.innerHTML = `
+      <div class=\"card__media\">
+        <img src=\"${r.img}\" alt=\"${r.titulo}\" onerror=\"this.onerror=null;this.src='https://placehold.co/600x400?text=Roteiro'\">
+      </div>
+      <div class=\"card__body\">
+        <h3 class=\"card__title\">${r.titulo}</h3>
+        <p>${r.desc}</p>
+      </div>`;
     vp.insertBefore(item, vp.firstChild);
   });
   // Append
   append.forEach((r) => {
     const item = document.createElement('article');
     item.className = 'roteiro-card';
-    item.innerHTML = `<h3>${r.titulo}</h3><p>${r.desc}</p>`;
+    item.innerHTML = `
+      <div class=\"card__media\">
+        <img src=\"${r.img}\" alt=\"${r.titulo}\" onerror=\"this.onerror=null;this.src='https://placehold.co/600x400?text=Roteiro'\">
+      </div>
+      <div class=\"card__body\">
+        <h3 class=\"card__title\">${r.titulo}</h3>
+        <p>${r.desc}</p>
+      </div>`;
     vp.appendChild(item);
   });
 
@@ -322,7 +343,14 @@ function renderRoteirosPage() {
     const item = document.createElement('article');
     item.className = 'roteiro-card';
     const prefixo = i === 0 ? 'Destaque: ' : '';
-    item.innerHTML = `<h3>${prefixo}${r.titulo}</h3><p>${r.desc}</p>`;
+    item.innerHTML = `
+      <div class="card__media">
+        <img src="${r.img}" alt="${r.titulo}" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Roteiro'">
+      </div>
+      <div class="card__body">
+        <h3 class="card__title">${prefixo}${r.titulo}</h3>
+        <p>${r.desc}</p>
+      </div>`;
     page.appendChild(item);
   });
 }
