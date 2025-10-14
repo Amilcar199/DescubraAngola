@@ -119,7 +119,7 @@ function createDestinoCard(destino) {
   card.className = 'card';
   card.innerHTML = `
     <div class="card__media">
-      <img src="${destino.img}" alt="${destino.nome}" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Destino'">
+      <img src="${destino.img}" alt="${destino.nome}" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Fenda%20da%20Tundavala%20-%20Lubango.jpg?width=1200'">
     </div>
     <div class="card__body">
       <h3 class="card__title">${destino.nome}</h3>
@@ -149,7 +149,7 @@ function createEventoCard(evento) {
   card.className = 'card';
   card.innerHTML = `
     <div class="card__media">
-      <img src="${evento.img}" alt="${evento.nome}" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Evento'">
+      <img src="${evento.img}" alt="${evento.nome}" onerror="this.onerror=null;this.src='https://commons.wikimedia.org/wiki/Special:FilePath/Fenda%20da%20Tundavala%20-%20Lubango.jpg?width=1200'">
     </div>
     <div class="card__body">
       <h3 class="card__title">${evento.nome}</h3>
@@ -233,9 +233,6 @@ function renderRoteirosCarousel() {
     const item = document.createElement('article');
     item.className = 'roteiro-card';
     item.innerHTML = `
-      <div class="card__media">
-        <img src="${r.img}" alt="${r.titulo}" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Roteiro'">
-      </div>
       <div class="card__body">
         <h3 class="card__title">${r.titulo}</h3>
         <p>${r.desc}</p>
@@ -260,9 +257,6 @@ function renderRoteirosCarousel() {
     const item = document.createElement('article');
     item.className = 'roteiro-card';
     item.innerHTML = `
-      <div class=\"card__media\">
-        <img src=\"${r.img}\" alt=\"${r.titulo}\" onerror=\"this.onerror=null;this.src='https://placehold.co/600x400?text=Roteiro'\">
-      </div>
       <div class=\"card__body\">
         <h3 class=\"card__title\">${r.titulo}</h3>
         <p>${r.desc}</p>
@@ -274,9 +268,6 @@ function renderRoteirosCarousel() {
     const item = document.createElement('article');
     item.className = 'roteiro-card';
     item.innerHTML = `
-      <div class=\"card__media\">
-        <img src=\"${r.img}\" alt=\"${r.titulo}\" onerror=\"this.onerror=null;this.src='https://placehold.co/600x400?text=Roteiro'\">
-      </div>
       <div class=\"card__body\">
         <h3 class=\"card__title\">${r.titulo}</h3>
         <p>${r.desc}</p>
@@ -344,9 +335,6 @@ function renderRoteirosPage() {
     item.className = 'roteiro-card';
     const prefixo = i === 0 ? 'Destaque: ' : '';
     item.innerHTML = `
-      <div class="card__media">
-        <img src="${r.img}" alt="${r.titulo}" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Roteiro'">
-      </div>
       <div class="card__body">
         <h3 class="card__title">${prefixo}${r.titulo}</h3>
         <p>${r.desc}</p>
