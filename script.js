@@ -438,6 +438,7 @@ function initAuth() {
   const accountView = document.getElementById('accountView');
   const accountEmail = document.getElementById('accountEmail');
   const logoutBtn = document.getElementById('logoutBtn');
+  const togglePwd = document.getElementById('togglePwd');
   if (!form || !loginView || !accountView) return;
 
   const saved = localStorage.getItem('da_user_email');
@@ -462,6 +463,12 @@ function initAuth() {
     localStorage.removeItem('da_user_email');
     accountView.style.display = 'none';
     loginView.style.display = '';
+  });
+
+  togglePwd && togglePwd.addEventListener('click', () => {
+    const input = document.getElementById('loginPassword');
+    if (!input) return;
+    input.type = input.type === 'password' ? 'text' : 'password';
   });
 }
 
