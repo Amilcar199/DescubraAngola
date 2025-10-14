@@ -119,7 +119,7 @@ function createDestinoCard(destino) {
   card.className = 'card';
   card.innerHTML = `
     <div class="card__media">
-      <img src="${destino.img}" alt="${destino.nome}">
+      <img src="${destino.img}" alt="${destino.nome}" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Destino'">
     </div>
     <div class="card__body">
       <h3 class="card__title">${destino.nome}</h3>
@@ -149,7 +149,7 @@ function createEventoCard(evento) {
   card.className = 'card';
   card.innerHTML = `
     <div class="card__media">
-      <img src="${evento.img}" alt="${evento.nome}">
+      <img src="${evento.img}" alt="${evento.nome}" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Evento'">
     </div>
     <div class="card__body">
       <h3 class="card__title">${evento.nome}</h3>
