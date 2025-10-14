@@ -107,10 +107,15 @@ body {
   display: grid;
   place-items: start start; /* canto superior esquerdo */
   padding-block: 8vh;
-  background:
-    linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.55)),
-    radial-gradient(1200px 400px at 85% 10%, rgba(212,0,0,.18), transparent 60%),
-    url('imagens/hero.jpg') center/cover no-repeat;
+}
+.hero__bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.55) saturate(1.05);
+  z-index: 0;
 }
 .hero__content {
   position: relative;
@@ -212,6 +217,12 @@ body {
   aspect-ratio: 16 / 10;
   object-fit: cover;
   display: block;
+}
+.card__media { position: relative; overflow: hidden; }
+.card__media::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(0,0,0,.35));
 }
 .card__body { padding: 12px 14px 14px; }
 .card__title { font-size: 1.05rem; margin: 0 0 6px 0; }
