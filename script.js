@@ -374,7 +374,7 @@ function renderOfertas(list) {
     const card = document.createElement('article');
     card.className = 'card';
     card.innerHTML = `
-      <div class="card__media"><img src="${o.img}" alt="${o.titulo}"></div>
+      <div class="card__media"><img src="${o.img}" alt="${o.titulo}" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Reserva'"></div>
       <div class="card__body">
         <h3 class="card__title">${o.titulo}</h3>
         <div class="card__meta">${o.destino} · ${o.tipo}</div>
@@ -433,7 +433,7 @@ function renderPosts(list) {
     const card = document.createElement('article');
     card.className = 'card';
     card.innerHTML = `
-      <div class="card__media"><img src="${p.img}" alt="${p.titulo}"></div>
+      <div class="card__media"><img src="${p.img}" alt="${p.titulo}" onerror="this.onerror=null;this.src='https://placehold.co/600x400?text=Artigo'"></div>
       <div class="card__body">
         <h3 class="card__title">${p.titulo}</h3>
         <p>${p.resumo}</p>
